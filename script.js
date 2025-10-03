@@ -139,3 +139,147 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+// Parte do menu
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.carrossel-track');
+    const slides = Array.from(document.querySelectorAll('.carrossel-menu-slide'));
+    const nextButton = document.querySelector('.prox-btn');
+    const prevButton = document.querySelector('.ante-btn');
+    const indicatorsContainer = document.querySelector('.carrousel-indicators');
+    const container = document.querySelector('.carrossel-menu-container     ');
+    
+    // Variáveis para controle de arrasto
+    let isDragging = false;
+    let startPosition = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID = 0;
+    let currentIndex = 0;
+    
+    // Criar indicadores
+    slides.forEach((_, index) => {
+        const indicator = document.createElement('span');
+        indicator.classList.add('indicator');
+        if (index === 0) indicator.classList.add('active');
+        indicator.addEventListener('click', () => goToSlide(index));
+        indicatorsContainer.appendChild(indicator);
+    });
+    
+    const indicators = document.querySelectorAll('.indicator');
+    
+    // Atualizar indicadores
+    function updateIndicators() {
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    // Ir para um slide específico
+    function goToSlide(index) {
+        currentIndex = index;
+        updateIndicators();
+        
+        // Calcular a posição de deslocamento
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        const gap = 30; // 15px de cada lado
+        const slideOffset = (slideWidth + gap) * currentIndex;
+        
+        track.style.transform = `translateX(-${slideOffset}px)`;
+        currentTranslate = -slideOffset;
+        prevTranslate = -slideOffset;
+    }
+    
+    // Eventos de mouse
+    container.addEventListener('mousedown', dragStart);
+    container.addEventListener('touchstart', dragStart);
+    
+    container.addEventListener('mousemove', drag);
+    container.addEventListener('touchmove', drag);
+    
+    container.addEventListener('mouseup', dragEnd);
+    container.addEventListener('touchend', dragEnd);
+    container.addEventListener('mouseleave', dragEnd);
+    
+    // Eventos de teclado
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+            nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+            prevSlide();
+        }
+    });
+    
+    // Botões de navegação
+    nextButton.addEventListener('click', nextSlide);
+    prevButton.addEventListener('click', prevSlide);
+    
+    // Navegação para o próximo slide
+    function nextSlide() {
+        if (currentIndex >= slides.length - 1) return;
+        currentIndex++;
+        goToSlide(currentIndex);
+    }
+    
+    // Navegação para o slide anterior
+    function prevSlide() {
+        if (currentIndex <= 0) return;
+        currentIndex--;
+        goToSlide(currentIndex);
+    }
+    
+    // Funções de arrasto
+    function dragStart(event) {
+        if (event.type === 'touchstart') {
+            startPosition = event.touches[0].clientX;
+        } else {
+            startPosition = event.clientX;
+            event.preventDefault();
+        }
+        
+        isDragging = true;
+        track.style.transition = 'none';
+        animationID = requestAnimationFrame(animation);
+        container.style.cursor = 'grabbing';
+    }
+    
+    function drag(event) {
+        if (!isDragging) return;
+        
+        const currentPosition = event.type === 'touchmove' ? 
+            event.touches[0].clientX : event.clientX;
+        const diff = currentPosition - startPosition;
+        
+        currentTranslate = prevTranslate + diff;
+        track.style.transform = `translateX(${currentTranslate}px)`;
+    }
+    
+    function dragEnd() {
+        if (!isDragging) return;
+        
+        isDragging = false;
+        cancelAnimationFrame(animationID);
+        container.style.cursor = 'grab';
+        
+        const movedBy = currentTranslate - prevTranslate;
+        
+        // Se o movimento foi significativo, mudar de slide
+        if (movedBy < -100 && currentIndex < slides.length - 1) {
+            currentIndex++;
+        }
+        
+        if (movedBy > 100 && currentIndex > 0) {
+            currentIndex--;
+        }
+        
+        goToSlide(currentIndex);
+    }
+    
+    function animation() {
+        if (isDragging) requestAnimationFrame(animation);
+    }
+    
+    // Inicializar
+    container.style.cursor = 'grab';
+});

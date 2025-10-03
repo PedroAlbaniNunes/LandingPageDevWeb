@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 
+body{
+    background-color: whitesmoke;
+}
 /* Inicio Header */
 /* Inicio cabeçalho */
 .cabecalho {
@@ -8,7 +11,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
-    background-color: #fff;
+    background-color: whitesmoke;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     position: relative;
@@ -88,9 +91,19 @@
 
 /* Inicio Chamariz */
 .chafariz h1 {
+    padding: 0px;
+    margin-bottom: 0px;
     text-align: center;
-    margin-bottom: 30px;
     font-size: 100px;
+    font-family: 'Great Vibes', cursive;
+    color: #e91e63;
+}
+
+.chafariz h3{
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    font-size: 50px;
     font-family: 'Great Vibes', cursive;
     color: #e91e63;
 }
@@ -101,7 +114,7 @@
 .container {
     width: 100%;
     height: 100%;
-    margin: 0 auto;
+    margin: 0px;
 }
 
 .container h2{
@@ -110,9 +123,10 @@
 
 .carousel-container {
     position: relative;
-    max-width: 30%;
-    max-height: 60%;
-    margin: 0 auto;
+    display: grid;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -156,8 +170,9 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto  ;
     transform: translateY(-50%);
-    padding: 0 15px;
 }
 
 .carousel-btn {
@@ -197,3 +212,118 @@
 }
 
 /* Fim destaques */
+
+/* Inicio Menu Carrosel */
+.carrossel-menu-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px 0;
+    cursor: grab;
+}
+
+.carrossel-menu-container:active {
+    cursor: grabbing;
+}
+
+.carrossel-track {
+    display: flex;
+    transition: transform 0.3s ease;
+    padding: 0 20px;
+}
+
+.carrossel-menu-slide {
+    flex: 0 0 auto;
+    width: 280px;
+    margin: 0 15px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carrossel-menu-slide:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.carrossel-menu-slide img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.slide-info {
+    padding: 15px;
+    color: #333;
+    text-align: left;
+}
+
+.slide-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.slide-info p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 0;
+}
+
+.carrousel-controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.control-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.carrousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+/* Fim Menu Carrosel */
