@@ -4,10 +4,13 @@
 #F2C894 -> beje
 #8C6542 -> marrom claro
 #0D0D0D -> preto*/
-
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&family=Playwrite+IE:wght@100..400&display=swap');
 
 
 /* Estilos básicos para o corpo da página */
+html{
+    scroll-behavior: smooth;
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -37,6 +40,8 @@ header {
 .titulo h3 {
     margin: 0; /* Remove a margem padrão do h3 para alinhamento perfeito */
     font-size: 1.5em;
+    font-family: "Libre Bodoni", serif;
+    font-optical-sizing: auto;
 }
 
 /* Estilo para a barra de navegação */
@@ -52,6 +57,7 @@ nav {
     list-style: none; /* Remove marcadores, caso estivessem usando <ul> */
     padding: 0;
     margin: 0;
+ 
 }
 
 /* Estilo dos parágrafos dentro dos links (simulando itens de menu) */
@@ -64,6 +70,9 @@ nav {
     color: #0D0D0D;
 }
 
+.links a:hover{
+    color: #8C6542;
+}
 
 /* Estilos da seção <main> */
 main {
@@ -105,16 +114,21 @@ h2 {
 
 .inicial-texto h1{
     font-size: 50px;
+    font-family: "Libre Bodoni", serif;
+    font-optical-sizing: auto;
 }
 
 .inicial-texto p{
-    font-size: 35px;
+    font-size: 33px;
+    font-family: "Playwrite IE", cursive;
+    font-optical-sizing: auto;
 }
 
 .inicial-imagem {
     flex: 1; /* Ocupa os outros 50% */
-    max-width: 50%;
+    max-width: 40%;
     text-align: right;
+    margin-right: auto;
 }
 
 .inicial-imagem img {
@@ -133,6 +147,8 @@ h2 {
 #sobre h2{
     font-size: 35px;
     color: #0D0D0D;
+    font-family: "Libre Bodoni", serif;
+    font-optical-sizing: auto;
 }
 
 .sobre-conteudo {
@@ -140,6 +156,8 @@ h2 {
     line-height: 1.6;
     color: #0D0D0D;
     font-size: 20px;
+    font-family: "Commissioner", sans-serif;
+    font-optical-sizing: auto;
 }
 
 
@@ -147,6 +165,11 @@ h2 {
 #planos {
     background-color: #D7D7D9;
     text-align: center;
+}
+
+#plano h2{
+    font-family: "Libre Bodoni", serif;
+    font-optical-sizing: auto;
 }
 
 .planos-container {
@@ -178,5 +201,35 @@ h2 {
 
 .plano-cartao p {
     font-size: 1.1em;
-    color: #333;
+    color: #0D0D0D;
+}
+
+
+footer{
+    margin: 0;
+}
+
+.rodape{
+  background-color: #D7D7D9;
+  color: #0D0D0D;
+  text-align: center;
+  padding: 5px;
+  width: 100%;
+  font-size: 15px;
+}
+
+.rodape span:hover{
+    color: #8C6542;
+}
+#contatos{
+    background-color:#D7D7D9;
+    text-align: center;
+}
+
+#contatos i{
+    font-size: 50px;
+}
+
+#contatos i:hover{
+    color: #8C6542;
 }
