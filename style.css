@@ -232,4 +232,5 @@ footer{
 
 #contatos i:hover{
     color: #8C6542;
+    cursor: pointer;
 }
