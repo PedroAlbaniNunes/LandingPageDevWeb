@@ -1,0 +1,174 @@
+/* Padroes de cores 
+#D7D7D9 -> cinza 
+#474F59 -> cinza azulado
+#F2C894 -> beje
+#8C6542 -> marrom claro
+#0D0D0D -> preto*/
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&family=Playwrite+IE:wght@100..400&display=swap');
+
+
+/* Estilos básicos para o corpo da página */
+html{
+    scroll-behavior: smooth;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #474F59;
+}
+
+/* Estilos do header */
+header {
+    width: 100%;
+    background-color: #D7D7D9; /* Cor de fundo para o cabeçalho */
+    color: #0D0D0D; /* Cor do texto */
+    padding: 15px 0; /* Padding vertical, o padding lateral será dado pelo .cabecalho */
+}
+
+
+/* Container Flexbox principal: Alinha Título (Esq) e Links (Dir) */
+.cabecalho {
+    display: flex; /* Habilita o Flexbox */
+    justify-content: space-between; /* Empurra o Título para a esquerda e os Links para a direita */
+    align-items: center; /* Alinha verticalmente no centro */
+    
+    /* Padding horizontal para dar um respiro nas laterais (ex: 5% ou um valor fixo) */
+    padding: 0 5%; 
+}
+
+/* Estilo do Título */
+.titulo h3 {
+    margin: 0; /* Remove a margem padrão do h3 para alinhamento perfeito */
+    font-size: 1.5em;
+    font-family: "Libre Bodoni", serif;
+    font-optical-sizing: auto;
+}
+
+.titulo a{
+    text-decoration: none;
+    color: #0D0D0D;
+}
+/* Estilo para a barra de navegação */
+nav {
+    /* Garante que a nav não quebre a linha, embora o flex já ajude */
+    white-space: nowrap; 
+}
+
+/* Container dos Links: Também usa Flexbox para alinhá-los horizontalmente */
+.links {
+    display: flex; /* Habilita o Flexbox */
+    gap: 25px; /* Espaçamento entre os links */
+    list-style: none; /* Remove marcadores, caso estivessem usando <ul> */
+    padding: 0;
+    margin: 0;
+ 
+}
+
+/* Estilo dos parágrafos dentro dos links (simulando itens de menu) */
+.links a {
+    margin: 0; /* Remove a margem padrão dos parágrafos */
+    font-size: 1em;
+    cursor: pointer;
+    transition: color 0.3s;
+    text-decoration: none;
+    color: #0D0D0D;
+}
+
+.links a:hover{
+    color: #8C6542;
+}
+
+
+
+main {
+    display: flex;
+    /* Centraliza verticalmente */
+    align-items: center; 
+    /* Centraliza horizontalmente */
+    justify-content: center; 
+}
+
+/* 2. Estiliza o seu container */
+#container {
+    /* Define uma largura máxima para não ocupar a tela toda */
+    margin-top: 10%;
+    max-width: 600px; 
+    
+    /* Garante que ele não encolha demais em telas pequenas */
+    width: 90%; 
+    
+    /* Estilos para parecer um "cartão" */
+    background-color: #D7D7D9;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+}
+
+#container button{
+    text-align: center;
+    margin-top: 3%;
+}
+
+/* ------------------------------------------- */
+/* CSS anterior (para o layout interno)      */
+/* ------------------------------------------- */
+
+.titulo h2 {
+    /* Só para centralizar o título "Pagamento" */
+    text-align: center;
+    margin-top: 0;
+}
+
+/* Estilo para o contêiner do formulário */
+.conteudo {
+    display: grid;
+    /* Define 2 colunas de tamanho igual */
+    grid-template-columns: 1fr 1fr; 
+    /* Espaçamento entre os campos */
+    gap: 20px; 
+}
+
+/* Estilo para cada grupo de label/input */
+.form-campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-campo label {
+    margin-bottom: 5px; 
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-campo input {
+    width: 100%; 
+    padding: 10px;
+    box-sizing: border-box; /* Importante para o padding não estourar a largura */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+footer{
+    margin: 0;
+}
+
+.rodape{
+    background-color: #D7D7D9;
+    color: #0D0D0D;
+    text-align: center;
+    padding: 5px;
+    width: 100%;
+    font-size: 15px;
+    position: fixed; /* Define a posição como fixa */
+    bottom: 0;       /* Alinha com a parte de baixo da janela */
+    left: 0;         /* Alinha com a parte esquerda da janela */
+    box-sizing: border-box; /* Garante que o 'padding' não quebre o 'width: 100%'*/
+}
+
+.rodape span:hover{
+    color: #8C6542;
+}
